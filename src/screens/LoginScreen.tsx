@@ -7,6 +7,7 @@ import Header from "../components/Header";
 export default function LoginScreen() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [passwordVisible, setPasswordVisible] = React.useState(false);
 
   return (
     <View style={styles.container}>
@@ -21,11 +22,14 @@ export default function LoginScreen() {
         />
         <TextInput
           label="Password"
-          secureTextEntry={true}
+          secureTextEntry={!passwordVisible}
           value={password}
           onChangeText={(text) => setPassword(text)}
           style={styles.input}
-          right={<TextInput.Icon icon="eye" />}
+          right=<TextInput.Icon
+            icon={passwordVisible ? "eye" : "eye-off"}
+            onPress={() => setPasswordVisible(!passwordVisible)}
+          />
         />
         <Button
           mode="contained"
