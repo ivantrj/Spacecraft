@@ -6,8 +6,10 @@ import {
   Text,
   FlatList,
   SafeAreaView,
+  ActivityIndicator,
 } from "react-native";
 import { Card, Button } from "react-native-paper";
+import { useIsConnected } from "react-native-offline";
 
 import { useStarships } from "~/hooks/useStarships";
 
@@ -40,6 +42,21 @@ const Item = ({ item }: ItemProps) => (
 
 export const StarshipFeedScreen = () => {
   const { isLoading, error, data } = useStarships();
+  const isConnected = useIsConnected();
+
+  if (!isConnected) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.headerTitle}>Starships</Text>
+        <View style={styles.offlineContainer}>
+          <Text style={styles.offlineText}>
+            Offline, trying to reconnect...
+          </Text>
+          <ActivityIndicator size="large" color="white" />
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   if (isLoading) {
     return <Text>Loading…</Text>;
@@ -89,5 +106,18 @@ const styles = StyleSheet.create({
   card: {
     margin: 8,
     backgroundColor: "white",
+  },
+  offlineContainer: {
+    backgroundColor: "red",
+    padding: 10,
+    borderRadius: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: 12,
+  },
+  offlineText: {
+    color: "white",
+    marginRight: 10,
   },
 });
