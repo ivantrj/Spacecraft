@@ -1,15 +1,15 @@
 import React from "react";
 import {
-  StyleSheet,
-  StatusBar,
-  View,
-  Text,
+  ActivityIndicator,
   FlatList,
   SafeAreaView,
-  ActivityIndicator,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View
 } from "react-native";
-import { Card, Button } from "react-native-paper";
 import { useIsConnected } from "react-native-offline";
+import { Button, Card } from "react-native-paper";
 
 import { useStarships } from "~/hooks/useStarships";
 
@@ -52,7 +52,10 @@ export const StarshipFeedScreen = () => {
           <Text style={styles.offlineText}>
             Offline, trying to reconnect...
           </Text>
-          <ActivityIndicator size="large" color="white" />
+          <ActivityIndicator
+            size="large"
+            color="white"
+          />
         </View>
       </SafeAreaView>
     );
@@ -82,42 +85,42 @@ export const StarshipFeedScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  card: {
+    backgroundColor: "white",
+    margin: 8
+  },
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0, // only for Android to avoid status bar overlap
-  },
-  itemsContainer: {
-    paddingHorizontal: 20,
-    marginTop: 20,
+    marginTop: StatusBar.currentHeight || 0 // only for Android to avoid status bar overlap
   },
   headerTitle: {
-    padding: 16,
     fontSize: 32,
     fontWeight: "bold",
+    padding: 16
   },
   item: {
-    padding: 20,
-    marginVertical: 8,
     marginHorizontal: 16,
+    marginVertical: 8,
+    padding: 20
   },
-  title: {
-    fontSize: 32,
-  },
-  card: {
-    margin: 8,
-    backgroundColor: "white",
+  itemsContainer: {
+    marginTop: 20,
+    paddingHorizontal: 20
   },
   offlineContainer: {
+    alignItems: "center",
     backgroundColor: "red",
-    padding: 10,
     borderRadius: 10,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
     margin: 12,
+    padding: 10
   },
   offlineText: {
     color: "white",
-    marginRight: 10,
+    marginRight: 10
   },
+  title: {
+    fontSize: 32
+  }
 });

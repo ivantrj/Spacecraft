@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 interface HeaderProps {
   title: string;
@@ -14,19 +14,19 @@ function Header(props: HeaderProps) {
 
 const styles = StyleSheet.create({
   header: {
-    flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#6850A4",
-    marginBottom: 20,
+    flex: 1,
+    justifyContent: "center",
+    marginBottom: 20
   },
   spacecraftText: {
     color: "#ffffff",
     fontSize: 24,
     fontWeight: "bold",
-    paddingVertical: 10,
     paddingHorizontal: 20,
-  },
+    paddingVertical: 10
+  }
 });
 
 export default Header;

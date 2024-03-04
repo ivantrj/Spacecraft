@@ -1,6 +1,6 @@
-import { StyleSheet, View, Text } from "react-native";
 import * as React from "react";
-import { TextInput, Button } from "react-native-paper";
+import { StyleSheet, Text, View } from "react-native";
+import { Button, TextInput } from "react-native-paper";
 
 import Header from "../components/Header";
 
@@ -48,23 +48,23 @@ export default function LoginScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#fff",
-    justifyContent: "center",
+    flex: 1,
+    justifyContent: "center"
   },
   form: {
-    flex: 2,
+    flex: 2
   },
   input: {
-    margin: 10,
+    margin: 10
   },
   loginButton: {
-    margin: 20,
+    margin: 20
   },
   termsText: {
-    fontSize: 12,
     color: "grey",
+    fontSize: 12,
     padding: 10,
-    textAlign: "center",
-  },
+    textAlign: "center"
+  }
 });
